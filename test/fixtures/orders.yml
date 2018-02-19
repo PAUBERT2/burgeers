@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  qunatity: 1
+  total_price: 1
+  delivered: false
+  burger: one
+  user: one
+
+two:
+  qunatity: 1
+  total_price: 1
+  delivered: false
+  burger: two
+  user: two
