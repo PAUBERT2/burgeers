@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :burgers
-  has_many :orders
+  has_many :orders, dependent: :destroy
 end
