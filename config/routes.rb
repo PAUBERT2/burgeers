@@ -1,22 +1,16 @@
 Rails.application.routes.draw do
-  get 'burgers/index'
-
-  get 'burgers/show'
 
   devise_for :users
-  root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'burgers#index'
 
-  # READ
-  # Read All
-  # get "tasks", to: "tasks#index"
-  get "burgers", to: "burgers#index"
+  resources :burgers, only: [:show, :new, :create, :destroy, :edit, :update] do
+    resources :orders, only: [:new, :create]
+  end
 
-  # Read one burger
-  # get "tasks/:id", to:"tasks#show", as: :task
-  get "burgers/:id", to:"burgers#show", as: :burger
+  resources :orders, only: [:show, :index]
 
-  # Or via resources
-  # resources :burgers, only: [:index, :show]
-  # WARNING : INDEX WHICH IS HOME
+  namespace :admin do
+    resources :burgers, only: [:index]
+  end
+
 end

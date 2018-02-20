@@ -1,0 +1,21 @@
+<%= simple_form_for @burger do |f| %>
+  <% if @burger.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @burger.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= f.input :name %>
+<%= f.input :description %>
+<%= f.input :price %>
+<%= f.input :quantity_max %>
+<%= f.input :opening_days, collection: Burger::WEEK_DAYS %>
+<%= f.input :published %>
+<%= f.input :image_url %>
+<%= f.submit class: "btn btn-primary" %>
+<%= link_to "Retournez sur la liste des burgers", root_path(), {class: "btn btn-info"} %>
+<% end %>
