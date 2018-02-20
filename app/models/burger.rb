@@ -8,5 +8,5 @@ class Burger < ApplicationRecord
   validates :quantity_max, presence: true
   validates :price, presence: true
   validates :name, uniqueness: { scope: :user, message:"already exist" }
-  validates :opening_days, inclusion: { in: WEEK_DAYS, allow_blank: true}
+  validates :opening_days, inclusion: { in: WEEK_DAYS, allow_blank: true }
 end
