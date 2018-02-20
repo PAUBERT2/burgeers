@@ -10,7 +10,14 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
+    <%= render 'layouts/flashes' %>
     <div class="container">
+
+      <% if current_user %>
+        <%= current_user.first_name %>
+      <% else %>
+        <p>Not connected</p>
+      <% end %>
       <%= yield %>
     </div>
     <%= javascript_include_tag 'application' %>

@@ -16,6 +16,6 @@
 <%= f.input :opening_days, collection: Burger::WEEK_DAYS %>
 <%= f.input :published %>
 <%= f.input :image_url %>
-<%= f.submit "Créez le burger", class: "btn btn-primary" %>
-<%= link_to "Retournez sur la liste des burgers", burgers_path(), {class: "btn btn-primary"} %>
+<%= f.submit class: "btn btn-primary" %>
+<%= link_to "Retournez sur la liste des burgers", root_path(), {class: "btn btn-info"} %>
 <% end %>

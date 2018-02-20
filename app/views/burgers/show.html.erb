@@ -1,0 +1,31 @@
+<h1>Burgers#show</h1>
+<p>Find me in app/views/burgers/show.html.erb</p>
+
+<div class="container">
+<!-- BURGER NAME -->
+  <h1> 🍔 Nom du burger : <%= @burger.name.capitalize %></h1>
+
+<!-- BURGER USER ID -->
+  <p> 🍴 Burger cuisiné par : <%= @burger.user.last_name %> <%= @burger.user.first_name %></p2>
+
+<!-- IMAGE_URL OF THIS BURGER -->
+  <% if !@burger[:photo].nil? %>
+    <%= cl_image_tag @burger.photo, height: 300, width: 400, crop: :fill %>
+  <% end %>
+
+<!-- BURGER PRICE -->
+  <p> 💰 Prix : <%= @burger.price %></p2>
+
+<!-- BURGER DESCRIPTION -->
+  <p> Description : <%= @burger.description %></p2>
+
+<!-- BURGER QT MAX -->
+  <p> Quantité maximum disponible :<%= @burger.quantity_max %></p2>
+
+<!-- BURGER OPENING DAYS -->
+  <p> Jours d'ouverture : <%= @burger.opening_days %></p2>
+
+<!-- GOING BACK TO THE BURGER LIST -->
+  <%= link_to "Back to the list", root_path(), {class: "btn btn-primary"} %> |
+  <%= link_to "Delete", burger_path(@burger), method: :delete, class: "btn btn-primary" %>
+</div>

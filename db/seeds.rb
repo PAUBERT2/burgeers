@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "destroying burgers..."
+Burger.destroy_all
+
+5.times do |i|
+  puts "Creating Burger n°#{i}..."
+  b = Burger.new(
+      name: Faker::Pokemon.name,
+      description: Faker::Lorem.word,
+      price: 10.4,
+      quantity_max: 3,
+      opening_days: Burger::WEEK_DAYS.sample,
+      )
+  b.user = User.last
+  p b
+  b.save
+end
+
