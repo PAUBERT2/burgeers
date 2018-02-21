@@ -36,7 +36,8 @@ end
     price: (50..150).to_a.sample/10,
     quantity_max: (1..10).to_a.sample,
     opening_days: Burger::WEEK_DAYS.sample,
-    user: User.where(cooker:true).sample
+    user: User.where(cooker:true).sample,
+    photo: File.new(File.join(__dir__, "../app/assets/images/image#{(1..5).to_a.sample}.jpg"))
     )
   burger.save!
   3.times do |y|
@@ -52,15 +53,6 @@ end
 
 end
 
-# 10.times do |i|
-#   puts "Creating Order n°#{i}..."
-#   order = Order.new(
-#     burger: Burger.all.sample,
-#     user: User.all.sample,
-#     quantity: (1..10).to_a.sample
-#     total_price: order.quantity * ( (50..150).to_a.sample/10 )
-#     )
-#   order.save
-# end
-
 puts 'Finished with great success !!!'
+
+# File.new(
