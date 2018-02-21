@@ -1,7 +1,13 @@
 class Admin::BurgersController < ApplicationController
 
   def index
-    @burgers = Burger.all.where(user == current_user)
+    @burgers = []
+    Burger.all.each do |burger|
+      if burger.user == current_user
+        @burgers << burger
+      end
+    end
+    return @burgers
   end
 
   private
