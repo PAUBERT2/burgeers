@@ -9,17 +9,33 @@
 puts "destroying burgers..."
 Burger.destroy_all
 
-5.times do |i|
+puts "destroying users..."
+User.destroy_all
+
+
+10.times do |y|
+  puts "Creating User n°#{y}..."
+  user = User.new(
+    email: Faker::Internet.email,
+    password: 'lewagon',
+    last_name: Faker::Name.first_name,
+    first_name: Faker::Name.last_name,
+    cooker: [true, false].sample
+    )
+  user.save
+end
+
+10.times do |i|
   puts "Creating Burger n°#{i}..."
   b = Burger.new(
       name: Faker::Pokemon.name,
       description: Faker::Lorem.word,
-      price: 10.4,
-      quantity_max: 3,
+      price: (50..150).to_a.sample/10,
+      quantity_max: (1..10).to_a.sample,
       opening_days: Burger::WEEK_DAYS.sample,
+      user: User.where(cooker:true).sample
       )
-  b.user = User.last
-  p b
   b.save
 end
 
+puts 'Finished with great success !!!'
