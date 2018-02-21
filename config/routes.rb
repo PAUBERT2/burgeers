@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create]
   end
 
-  resources :orders, only: [:show, :index]
+  resources :orders, only: [:show, :index] do
+    collection do
+      get "mine" , to: "orders#index_cooker_orders"
+    end
+  end
 
   namespace :admin do
     resources :burgers, only: [:index]

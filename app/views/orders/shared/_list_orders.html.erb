@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <td>🍔 Burger Name :</td>
+      <td>Quantity :</td>
+      <td>💶 Total price : </td>
+      <td>🚁 Delivered :</td>
+      <td>😃 Ordered by :</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.burger.name, burger_path(order.burger) %></td>
+        <td><%= order.quantity %> burgers</td>
+        <td><%= order.total_price %> €</td>
+        <td><%= order.delivered ? "👍 Livré" : "🚀 En cours de livraison" %></td>
+        <td><%= order.user.first_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
