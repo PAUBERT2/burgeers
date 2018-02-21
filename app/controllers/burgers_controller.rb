@@ -2,7 +2,7 @@ class BurgersController < ApplicationController
   before_action :find_burger, only: [:edit, :destroy, :update, :show]
 
   def index
-    @burgers = Burger.all
+    @burgers = policy_scope(Burger).order(created_at: :desc)
   end
 
   def show
@@ -11,11 +11,13 @@ class BurgersController < ApplicationController
 
   def new
     @burger = Burger.new
+    authorize @burger
   end
 
   def create
     @burger = Burger.new(burger_params)
     @burger.user = current_user
+    authorize @burger
     if @burger.save
       redirect_to burger_path(@burger)
     else
@@ -24,39 +26,28 @@ class BurgersController < ApplicationController
   end
 
   def edit
-    if @burger.user != current_user
-      flash[:alert] = "You are not authorized to perform this action."
-      render :show
-    end
+    authorize @burger
+    render :show
   end
 
   def update
-    if @burger.user == current_user
-      if @burger.update(burger_params)
-        redirect_to burger_path(@burger)
-      else
-        render :edit
-      end
+    if @burger.update(burger_params)
+      redirect_to burger_path(@burger)
     else
-      flash[:alert] = "You are not authorized to perform this action."
-      render :show
+      render :edit
     end
   end
 
   def destroy
-    if @burger.user == current_user
-      @burger.destroy
-      redirect_to root_path
-    else
-      flash[:alert] = "You are not authorized to perform this action."
-      render :show
-    end
+    @burger.destroy
+    redirect_to root_path
   end
 
   private
 
   def find_burger
     @burger = Burger.find(params[:id])
+    authorize @burger
   end
 
     # Never trust parameters from the scary internet, only allow the white list through.
