@@ -4,19 +4,6 @@
       <div class ="btn btn-primary btn-lg"><%= link_to "Search" %></div>
   </div>
 </div>
+<%= render 'burgers/shared/list-burger' %>
 
-
-<div class="row">
-  <ul class = "list-unstyled">
-    <% @burgers.each do |burger| %>
-    <li>
-     <div class="col-xs-12 col-sm-4">
-        <div class="card text-center">
-            <%= link_to burger.name, burger_path(burger) %>
-        </div>
-      </div>
-    </li>
-    <% end %>
-  </ul>
-</div>
 

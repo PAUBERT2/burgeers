@@ -14,3 +14,5 @@ Rails.application.routes.draw do
   end
 
 end
+# no destroy method on order, as we consider that a payed order cannot be canceled
+

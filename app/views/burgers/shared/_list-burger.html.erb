@@ -1,0 +1,11 @@
+<div class="row">
+  <% @burgers.each do |burger| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <%= link_to burger.name, burger_path(burger) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
