@@ -10,8 +10,8 @@ class OrdersController < ApplicationController
 
     @order = Order.new(order_params)
     @order.user = current_user
-    @order.burger = Burger.find(params[:burger_id])
-
+    @burger =  Burger.find(params[:burger_id])
+    @order.burger = @burger
     @order.total_price = @order.quantity * @burger.price
 
     if @order.save
@@ -26,7 +26,19 @@ class OrdersController < ApplicationController
     @orders = Order.all
     # methode listant toutes les commandes d'un utilisateur
     @orders = Order.where(user: current_user)
+  end
 
+
+  def index_cooker_orders
+    # methode listant toutes les commandes
+    @orders = []
+    Order.all.each do |order|
+      if order.burger.user_id == current_user.id
+        @orders << order
+      end
+    end
+    # methode listant toutes les commandes d'un utilisateur
+    return @sorders
   end
 
   def show
