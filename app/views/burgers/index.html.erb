@@ -1,25 +1,22 @@
-<h1>Burgers#index</h1>
-<p>Find me in app/views/burgers/index.html.erb</p>
-<br>
-<br>
-<h1 class="text-center">BURGERS LIST</h1>
-<br>
-<br>
-<div class="container" >
-  <div class="text-center padded">
-
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(235,87,87,0.3) 50%), url('<%=asset_path("images/burger.jpg")%>);">
+  <div class="banner-content">
+      <h1>Home made for home</h1>
+      <div class ="btn btn-primary btn-lg"><%= link_to "Search" %></div>
   </div>
+</div>
 
-  <div class="row">
+
+<div class="row">
+  <ul class = "list-unstyled">
     <% @burgers.each do |burger| %>
-      <div class="col-xs-12 col-sm-4">
+    <li>
+     <div class="col-xs-12 col-sm-4">
         <div class="card text-center">
-          <div class="card-body">
             <%= link_to burger.name, burger_path(burger) %>
-          </div>
         </div>
       </div>
+    </li>
     <% end %>
-  </div>
+  </ul>
 </div>
 
