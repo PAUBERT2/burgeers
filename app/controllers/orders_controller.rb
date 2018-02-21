@@ -9,11 +9,8 @@ class OrdersController < ApplicationController
   def create
 
     @order = Order.new(order_params)
-    user = current_user
-    @order.user = user
-
-    @burger = Burger.find(params[:burger_id])
-    @order.burger = @burger
+    @order.user = current_user
+    @order.burger = Burger.find(params[:burger_id])
 
     @order.total_price = @order.quantity * @burger.price
 
