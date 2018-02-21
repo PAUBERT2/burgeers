@@ -61,7 +61,7 @@ class BurgersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
   def burger_params
-    params.require(:burger).permit(:name, :description, :image_url, :price, :quantity_max, :opening_days, :published)
+    params.require(:burger).permit(:name, :description, :photo, :price, :quantity_max, :opening_days, :published)
   end
 
 end

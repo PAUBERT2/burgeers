@@ -1,5 +1,3 @@
-#Cloudinary API key
-CLOUDINARY_URL: "cloudinary://548713844586597:ZcgqjgIaIB9j_CP0fFXt-z1U53Q@dwz92pw1m"
 # PostgreSQL. Versions 9.1 and up are supported.
 #
 # Install the pg driver:
