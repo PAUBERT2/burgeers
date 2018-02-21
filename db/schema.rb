@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20180221110250) do
 
   # These are extensions that must be enabled in order to support this database
@@ -32,7 +33,7 @@ ActiveRecord::Schema.define(version: 20180221110250) do
   create_table "orders", force: :cascade do |t|
     t.integer "quantity"
     t.integer "total_price"
-    t.boolean "delivered"
+    t.boolean "delivered", default: false
     t.bigint "burger_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
