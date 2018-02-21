@@ -10,8 +10,11 @@ class OrdersController < ApplicationController
     # cré 1 instance order en utilisant le hash quantité des params (sinon faudrait demander la clé du hash et l'affecter, plus compliqué..)
     @order = Order.new(order_params)
     @order.user = current_user
+
     # burger_id et non pas id, parce qu'on a nested pour pouvoir récupérer l'id du burger
-    @order.burger = Burger.find(params[:burger_id])
+
+    @burger =  Burger.find(params[:burger_id])
+    @order.burger = @burger
 
     @order.total_price = @order.quantity * @burger.price
     # il faut pernser à faire les strong params sinon c'est jamais sauvegarder en bdd et ca passe en else
@@ -28,7 +31,19 @@ class OrdersController < ApplicationController
     @orders = Order.all
     # methode listant toutes les commandes d'un utilisateur
     @orders = Order.where(user: current_user)
+  end
 
+
+  def index_cooker_orders
+    # methode listant toutes les commandes
+    @orders = []
+    Order.all.each do |order|
+      if order.burger.user_id == current_user.id
+        @orders << order
+      end
+    end
+    # methode listant toutes les commandes d'un utilisateur
+    return @sorders
   end
 
   def show
