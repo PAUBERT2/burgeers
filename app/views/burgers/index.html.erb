@@ -1,25 +1,5 @@
-<h1>Burgers#index</h1>
-<p>Find me in app/views/burgers/index.html.erb</p>
-<br>
-<br>
 <h1 class="text-center">BURGERS LIST</h1>
 <br>
 <br>
-<div class="container" >
-  <div class="text-center padded">
-
-  </div>
-
-  <div class="row">
-    <% @burgers.each do |burger| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card text-center">
-          <div class="card-body">
-            <%= link_to burger.name, burger_path(burger) %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+<%= render 'burgers/shared/list-burger' %>
 
