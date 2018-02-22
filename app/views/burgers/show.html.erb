@@ -1,4 +1,31 @@
 <div class="row">
+
+  <div class = "menu-show">
+    <!-- GOING BACK TO THE BURGER LIST -->
+    <%= link_to "Back to the list", root_path(), {class: "btn-burgeers"} %> |
+    <%= link_to "Delete", burger_path(@burger), method: :delete, class: "btn-burgeers" %> |
+    <%= link_to "Update your burger", edit_burger_path(@burger), class: "btn-burgeers" %> |
+    <%= link_to "Order !", new_burger_order_path(@burger), {class: "btn-push"} %>
+  </div>
+</div>
+
+
+<div class="row background-card">
+  <div>
+    <div class="col-xs-12 col-sm-6">
+      <% if @burger.photo.present? %>
+        <%= cl_image_tag @burger.photo, class: "show-photo"%></div>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <h1> <%= @burger.name.capitalize %></h1>
+        <p> <strong>Cooker:</strong>  <%= @burger.user.last_name %> <%= @burger.user.first_name %></p>
+        <p> <strong>Price :</strong> <%= @burger.price %> $</p>
+        <p> <strong>Description :</strong> <%= @burger.description %></p>
+        <p> <strong>Stock :</strong> <%= @burger.quantity_max %></p>
+        <p> <strong>Opening days :</strong> <%= @burger.opening_days %></p>
+    </div>
+
   <div class="col-xs-12 col-sm-6">
     <% if !@burger[:photo].nil? %>
       <div class = "burger-photo"> <%= cl_image_tag @burger.photo, height: 300, width: 400, crop: :fill %></div>
@@ -32,6 +59,7 @@
       <%= link_to "Met à jour ton burgeer", edit_burger_path(@burger), class: "btn-burgeers" %> |
     <% end %>
     <%= link_to "Commande ton burgeer !", new_burger_order_path(@burger), {class: "btn-burgeers"} %>
+
   </div>
 </div>
 
