@@ -2,7 +2,7 @@ class Admin::BurgersController < ApplicationController
 
   def index
     @burgers = []
-    Burger.all.each do |burger|
+    policy_scope(Burger).each do |burger|
       if burger.user == current_user
         @burgers << burger
       end

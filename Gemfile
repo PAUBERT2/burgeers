@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 
-
+gem "pundit"
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'devise'
@@ -11,6 +11,7 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.1.5'
 gem 'redis'
+gem 'geocoder'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'

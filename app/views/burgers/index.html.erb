@@ -2,11 +2,20 @@
   <div class="banner-content">
       <h1>Home made for home</h1>
   </div>
+
 </div>
+<!--
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
+    <div
+      id="map"
+      style="width: 100%; height: 600px;"
+      data-markers="<%= @markers.to_json %>"
+    ></div>
+
+
 <%= render 'burgers/shared/list-burger' %>
 
 <%= link_to "Crée ton burgeer !", new_burger_path(), {class: "btn btn-primary"} %> |
 <%= link_to "Voir tous mes burgers", admin_burgers_path(), {class: "btn btn-primary"} %> |
 <%= link_to "Voir toutes mes commandes passées", orders_path(), {class: "btn btn-primary"} %> |
 <%= link_to "Voir toutes mes commandes reçues", mine_orders_path(), {class: "btn btn-primary"} %>
-

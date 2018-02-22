@@ -6,11 +6,11 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
+    <%= link_to "🍔 Add a burger", new_burger_path, method: :get, class: "btn-burgeers" %>
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "🍔 Add a burger", new_burger_path, method: :get, class: "btn-burgeers" %>
+
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
