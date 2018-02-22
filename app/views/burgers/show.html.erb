@@ -22,8 +22,12 @@
     <div class = "menu-show">
       <!-- GOING BACK TO THE BURGER LIST -->
       <%= link_to "Back to the list", root_path(), {class: "btn-burgeers"} %> |
-      <%= link_to "Delete", burger_path(@burger), method: :delete, class: "btn-burgeers" %> |
-      <%= link_to "Met à jour ton burgeer", edit_burger_path(@burger), class: "btn-burgeers" %> |
+      <% if policy(@burger).destroy? %>
+        <%= link_to "Delete", burger_path(@burger), method: :delete, class: "btn-burgeers" %> |
+      <% end %>
+      <% if policy(@burger).edit? %>
+        <%= link_to "Met à jour ton burgeer", edit_burger_path(@burger), class: "btn-burgeers" %> |
+      <% end %>
       <%= link_to "Commande ton burgeer !", new_burger_order_path(@burger), {class: "btn-burgeers"} %>
     </div>
   </div>
