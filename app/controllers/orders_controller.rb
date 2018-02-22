@@ -1,5 +1,10 @@
 class OrdersController < ApplicationController
 
+
+  after_action :verify_authorized, except: [:index, :index_cooker_orders], unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: [:index, :index_cooker_orders], unless: :skip_pundit?
+
+
   def new
     # créer 1 instance d'order et 1 instance burger pour contruire le formulaire avec les champs nommés et le chemin nested
     @order = Order.new
@@ -38,15 +43,16 @@ class OrdersController < ApplicationController
 
   def index_cooker_orders
     # methode listant toutes les commandes
-    @orders = []
-    policy_scope(Order).each do |order|
-      authorize @order
-      if order.burger.user_id == current_user.id
-        @orders << order
-      end
-    end
-    # methode listant toutes les commandes d'un utilisateur
-    return @orders
+    # TODO : requete à améliorer !!!!!
+    @orders = policy_scope(Order).joins(:burger).where(burgers: {user_id: current_user.id} )
+    # orders.each do |order|
+    #   authorize @order
+    #   if order.burger.user_id == current_user.id
+    #     @orders << order
+    #   end
+    # end
+    # # methode listant toutes les commandes d'un utilisateur
+    # return @orders
   end
 
   def show

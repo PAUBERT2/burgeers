@@ -1,4 +1,5 @@
 class BurgersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_burger, only: [:edit, :destroy, :update, :show]
 
   def index
@@ -26,8 +27,6 @@ class BurgersController < ApplicationController
   end
 
   def edit
-    authorize @burger
-    render :show
   end
 
   def update

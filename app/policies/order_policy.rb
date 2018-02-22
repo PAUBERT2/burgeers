@@ -13,4 +13,8 @@ class OrderPolicy < ApplicationPolicy
     true
   end
 
+  def index_cooker_orders?
+    true
+  end
+
 end
