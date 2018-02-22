@@ -9,15 +9,23 @@ class BurgersController < ApplicationController
     @users = User.where.not(latitude: nil, longitude: nil)
 
     @markers = @users.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude#,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-      }
+      if !user.burgers.empty?
+        {
+          lat: user.latitude,
+          lng: user.longitude#,
+          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        }
+      end
     end
   end
 
   def show
+    @markers = [
+      {
+        lat: @burger.user.latitude,
+        lng: @burger.user.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      } ]
   end
 
 

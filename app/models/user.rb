@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_many :burgers
   has_many :orders, dependent: :destroy
+
+  validates :address, presence: true
 end
 
 

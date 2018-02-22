@@ -1,41 +1,37 @@
-<div class="container">
-  <br>
-  <br>
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <% if !@burger[:photo].nil? %>
-        <div class = "burger-photo"> <%= cl_image_tag @burger.photo, height: 300, width: 400, crop: :fill %></div>
-      <% end %>
-    </div>
-      <div class="col-xs-12 col-sm-6">
-          <h1> 🍔 <%= @burger.name.capitalize %></h1>
-          <p> 🍴 Cooker : <%= @burger.user.last_name %> <%= @burger.user.first_name %></p>
-          <p> 💲 Price : <%= @burger.price %></p>
-          <p> 📝 Description : <%= @burger.description %></p>
-          <p> 📦 Stock : <%= @burger.quantity_max %></p>
-          <p> 📆 Opening days : <%= @burger.opening_days %></p>
-      </div>
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <% if !@burger[:photo].nil? %>
+      <div class = "burger-photo"> <%= cl_image_tag @burger.photo, height: 300, width: 400, crop: :fill %></div>
+    <% end %>
   </div>
-
-
-  <div
-    id="map"
-    style="width: 100%;
-    height: 600px;"
-    data-markers="<%= @markers.to_json %>"
-  ></div>
-
-  <div class="row">
-    <div class = "menu-show">
-      <!-- GOING BACK TO THE BURGER LIST -->
-      <%= link_to "Back to the list", root_path(), {class: "btn-burgeers"} %> |
-      <% if policy(@burger).destroy? %>
-        <%= link_to "Delete", burger_path(@burger), method: :delete, class: "btn-burgeers" %> |
-      <% end %>
-      <% if policy(@burger).edit? %>
-        <%= link_to "Met à jour ton burgeer", edit_burger_path(@burger), class: "btn-burgeers" %> |
-      <% end %>
-      <%= link_to "Commande ton burgeer !", new_burger_order_path(@burger), {class: "btn-burgeers"} %>
+    <div class="col-xs-12 col-sm-6">
+        <h1> 🍔 <%= @burger.name.capitalize %></h1>
+        <p> 🍴 Cooker : <%= @burger.user.last_name %> <%= @burger.user.first_name %></p>
+        <p> 💲 Price : <%= @burger.price %></p>
+        <p> 📝 Description : <%= @burger.description %></p>
+        <p> 📦 Stock : <%= @burger.quantity_max %></p>
+        <p> 📆 Opening days : <%= @burger.opening_days %></p>
     </div>
+</div>
+
+
+<div
+  id="map"
+  style="width: 100%; height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+></div>
+
+<div class="row">
+  <div class = "menu-show">
+    <!-- GOING BACK TO THE BURGER LIST -->
+    <%= link_to "Back to the list", root_path(), {class: "btn-burgeers"} %> |
+    <% if policy(@burger).destroy? %>
+      <%= link_to "Delete", burger_path(@burger), method: :delete, class: "btn-burgeers" %> |
+    <% end %>
+    <% if policy(@burger).edit? %>
+      <%= link_to "Met à jour ton burgeer", edit_burger_path(@burger), class: "btn-burgeers" %> |
+    <% end %>
+    <%= link_to "Commande ton burgeer !", new_burger_order_path(@burger), {class: "btn-burgeers"} %>
   </div>
 </div>
+
