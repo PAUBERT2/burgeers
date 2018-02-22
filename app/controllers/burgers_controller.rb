@@ -3,7 +3,18 @@ class BurgersController < ApplicationController
   before_action :find_burger, only: [:edit, :destroy, :update, :show]
 
   def index
+
     @burgers = policy_scope(Burger).order(created_at: :desc)
+
+    @users = User.where.not(latitude: nil, longitude: nil)
+
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
   end
 
   def show

@@ -23,7 +23,8 @@ User.destroy_all
     password: 'lewagon',
     last_name: Faker::Name.first_name,
     first_name: Faker::Name.last_name,
-    cooker: [true, false].sample
+    cooker: [true, false].sample,
+    address: "#{Faker::Address.street_address}, #{Faker::Address.city}"
     )
   user.save
 end
@@ -37,7 +38,7 @@ end
     quantity_max: (1..10).to_a.sample,
     opening_days: Burger::WEEK_DAYS.sample,
     user: User.where(cooker:true).sample,
-    photo: File.new(File.join(__dir__, "../app/assets/images/image#{(1..5).to_a.sample}.jpg"))
+    # photo: File.new(File.join(__dir__, "../app/assets/images/image#{(1..5).to_a.sample}.jpg"))
     )
   burger.save!
   3.times do |y|
