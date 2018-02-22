@@ -26,6 +26,7 @@ class BurgersController < ApplicationController
         lng: @burger.user.longitude#,
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       } ]
+    @order = Order.new
   end
 
 
