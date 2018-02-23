@@ -16,28 +16,36 @@
         <!-- Avatar with dropdown menu -->
         <div class="navbar-wagon-item">
           <div class="dropdown">
-            <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+            <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id:"navbar-wagon-menu", "data-toggle".to_sym => "dropdown"  %>
+
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
               <li>
-                <%= link_to admin_burgers_path() do %>
-                  <i class="fas fa-utensils"></i> <%= t(".profile", default: "My kitchen") %>
+                <%= link_to admin_burgers_path do %>
+                  <i class="fas fa-utensils"></i> <%= t(".profile", default: "My cooked burgeers") %>
                 <% end %>
               </li>
               <li>
                 <%= link_to orders_path() do %>
-                  <i class="fas fa-shopping-basket"></i>  <%= t(".settings", default: "Basket") %>
+                  <i class="fas fa-shopping-basket"></i>  <%= t(".settings", default: "My ordered burgeers") %>
                 <% end %>
               </li>
               <li>
                 <%= link_to mine_orders_path() do %>
-                  <i class="fa fa-cog"></i>  <%= t(".settings", default: "My orders") %>
+                  <i class="fa fa-cog"></i>  <%= t(".settings", default: "My clients orders ") %>
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to edit_user_registration_path do %>
+                  <i class="fas fa-edit"></i></i>  <%= t(".sign_out", default: "Edit my profile") %>
                 <% end %>
               </li>
               <li>
-                <%= link_to "Destroy", destroy_user_session_path, method: :delete  %>
-                  <!-- <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %> -->
-
+                <%= link_to destroy_user_session_path(), method: :delete do %>
+                  <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
+                <% end %>
               </li>
+
             </ul>
           </div>
         </div>
