@@ -1,9 +1,6 @@
 <div class="row">
   <div class="col-xs-6 col-xs-offset-3">
    <div class="form-burger">
-    <h2 class= "text-center burger-title">Create your burger :</h2>
-    <br>
-    <br>
     <%= simple_form_for @burger do |f| %>
         <% if @burger.errors.any? %>
           <div class="errors-container">
@@ -24,7 +21,7 @@
       <%= f.input :photo %>
       <%= f.input :photo_cache, as: :hidden %>
       <div class="inline"><%= f.submit class: "btn-push" %>
-        <%= link_to "List", root_path(), {class: "btn-burgeers"} %></div>
+        <%= link_to "Home", root_path(), {class: "btn-burgeers"} %></div>
       <% end %>
 
 

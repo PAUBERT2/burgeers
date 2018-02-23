@@ -1,5 +1,5 @@
 .card {
-  height: 175px;
+  height: 185px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
@@ -9,9 +9,9 @@
 }
 .card-user {
   position: absolute;
-  right: 10px;
+  right: 5px;
   top: 10px;
-  width: 40px;
+  width: 35px;
   border-radius: 50%;
 }
 .card-category {
@@ -61,7 +61,6 @@
   background-position: center;
 }
 
-
 .menu-show {
   color: white;
   text-align: center;
@@ -71,3 +70,4 @@
   align-items: center;
   justify-content: center;
 }
+

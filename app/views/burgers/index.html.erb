@@ -1,21 +1,22 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(235,87,87,0.3) 50%), url(<%= image_path 'burger.jpg' %>)">
-  <div class="banner-content">
-      <h1>Home made for home</h1>
+<div class="row">
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.5) 0%, rgba(235,87,87,0.2) 50%), url(<%= image_path 'burger.jpg' %>)">
+    <div class="banner-content">
+        <h1>Home made burger</h1>
+        <span id="banner-typed-text"></span>
+      </h1>
+    </div>
   </div>
-
 </div>
-<!--
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
-    <div
-      id="map"
-      style="width: 100%; height: 600px;"
-      data-markers="<%= @markers.to_json %>"
-    ></div>
+  <!--
+      <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
+<div class ="row background-card">
+    <div>
+      <div
+        id="map"
+        style="width: 100%; height: 40vh;"
+        data-markers="<%= @markers.to_json %>"
+      ></div>
+    </div>
+  <%= render 'burgers/shared/list-burger' %>
+</div>
 
-
-<%= render 'burgers/shared/list-burger' %>
-
-<%= link_to "Crée ton burgeer !", new_burger_path(), {class: "btn btn-primary"} %> |
-<%= link_to "Voir tous mes burgers", admin_burgers_path(), {class: "btn btn-primary"} %> |
-<%= link_to "Voir toutes mes commandes passées", orders_path(), {class: "btn btn-primary"} %> |
-<%= link_to "Voir toutes mes commandes reçues", mine_orders_path(), {class: "btn btn-primary"} %>
