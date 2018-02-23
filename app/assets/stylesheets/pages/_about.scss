@@ -40,11 +40,8 @@
   grid-row: 1 / span 2;
   grid-column: 1 / span 1;
 }
-.profile .description {
-  grid-row: 2;
-  grid-column: 3 / span 2;
-}
-.main, .description, .stat {
+
+.profile .main .description, .stat{
   background: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   padding: 50px;
@@ -59,24 +56,19 @@
   }
 }
 
-.main, .description {
-  // background: white;
+.profile .team {
+  background-image: url('background.jpg');
+  background-repeat:no-repeat;
+  background-position: right right;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  padding: 50px;
+  padding: 60px 30px;
   margin: 10px;
-  display: flex;
+  display: block;
   align-items: center;
-  justify-content: space-around;
-}
-@media (max-width: 940px) {
-  .profile {
-    display: block;
-  }
-}
+  justify-content: center;
+  grid-row: 2;
+  grid-column: 3 / span 2;
 
-.background {
-  background-image: url("background.jpg");
-  opacity: 0.2px;
 }
 
 .profile .video-container {
@@ -97,10 +89,10 @@
 
 /* Fonts and colors */
 
-.profile h3 {
+h6 {
   font-size: 22px;
   margin-bottom: 15px;
-  font-family: "Open Sans";
+  font-family: Raleway;
   // font-weight: bold;
   color: #e74c3c;
   letter-spacing: 3px;
