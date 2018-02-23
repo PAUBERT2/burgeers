@@ -1,11 +1,17 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h2 class= "text-center burger-title"> Your order :</h2>
 
-    <li><%= @order.quantity %> 🍔</li>
-    <li>💶 Prix total : <%= @order.total_price %> €</li>
-    <li><%= @order.delivered ? "👍 Livré" : "🚀 En cours de livraison" %></li>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+   <div class=" text-center form-burger">
+    <p>You ordered <strong><%=@order.quantity %></strong> <%= @order.burger.name %> 🍔 </p>
+    <p>Prix total : <strong><%= @order.total_price %> €</strong> 💶</p>
+    <p><%= @order.delivered ? "👍 delivered" : "🚀 We are cooking your burger, we should be ready soon" %></p>
+    <br>
 
 <!-- rajouter lien vers index -->
 
 
-<%= link_to "Retournez aux burgeer !", root_path(), {class: "btn btn-primary"} %>
+    <%= link_to "Your basket", orders_path(), {class: "btn-push"} %>
+    </div>
+  </div>
+</div>

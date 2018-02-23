@@ -1,48 +1,41 @@
-<table>
-  <thead>
-    <tr>
-      <td>🍔 Burger Name :</td>
-      <td>Quantity :</td>
-      <td>💶 Total price : </td>
-      <td>🚁 Delivered :</td>
-      <td>😃 Ordered by :</td>
-    </tr>
-  </thead>
-  <tbody>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
     <% @orders.each do |order| %>
-      <tr>
+      <div class="message">
+        <%= image_tag order.burger.photo, class: "photo-order"%>
+        <div class="message-name burger-title">
+          <%= order.quantity %> <%= order.burger.name %>
+        </div>
+        <div class="message-body burger-title-2">
+          <%= order.delivered ? "🚀 Livré" : "🚀 En cours de livraison" %>
+          <%= order.user.first_name %>
+        </div>
+        <div class="message-body">
+          <p class="status pending">Pending</p>
+          <%= order.total_price %> €
+        </div>
+        <div>
 
 
-        <!-- ADD BUTTON CHECKBOX -->
-        <td><%= link_to order.burger.name, burger_path(order.burger) %>
-
-
-      <% if request.original_url.include?("mine") %>
-        <%= simple_form_for order do |f| %>
-          <% if order.errors.any? %>
-            <div class="errors-container">
-              <ul>
-                <% @order.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
+          <% if request.original_url.include?("mine") %>
+            <%= simple_form_for order do |f| %>
+              <% if order.errors.any? %>
+                <div class="errors-container">
+                  <ul>
+                    <% @order.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <%= f.submit class: "btn-push" %>
+            <% end %>
           <% end %>
-          <%= f.submit class: "btn-push" %>
-        <% end %>
-      <% end %>
 
 
 
-
-
-
-        </td>
-        <td><%= order.quantity %> burgers</td>
-        <td><%= order.total_price %> €</td>
-        <td><%= order.delivered %></td>
-        <td><%= order.user.first_name %></td>
-      </tr>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>

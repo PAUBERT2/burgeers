@@ -1,39 +1,41 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>BURGEERS 🍔</title>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
-  </head>
+<div class="container">
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>BURGEERS</title>
+      <%= csrf_meta_tags %>
+      <%= action_cable_meta_tag %>
+      <%= stylesheet_link_tag 'application', media: 'all' %>
+      <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    </head>
 
-  <body>
-    <%= render 'layouts/flashes' %>
-    <div class="container">
+    <body>
+      <%= render 'layouts/flashes' %>
+      <div class="container">
 
-      <% if current_user %>
-        <%= current_user.first_name %>
-      <% else %>
-        <p>Not connected</p>
-      <% end %>
+        <% if current_user %>
+          <%= current_user.first_name %>
+        <% else %>
+          <p>Not connected</p>
+        <% end %>
 
-      <%= render "layouts/navbar" %>
+        <%= render "layouts/navbar" %>
 
-      <%= yield %>
+        <%= yield %>
 
-      <%= render "layouts/footer" %>
-    </div>
+        <%= render "layouts/footer" %>
+      </div>
 
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}&libraries=places" %>
+      <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}&libraries=places" %>
+
+      <%= javascript_include_tag 'application' %>
+      <%= javascript_pack_tag 'application' %>
+      <%= javascript_pack_tag "map"%>
+      <%= javascript_pack_tag 'search-map' %>
 
 
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
-    <%= javascript_pack_tag "map"%>
+    </body>
 
-  </body>
-
-</html>
+  </html>
