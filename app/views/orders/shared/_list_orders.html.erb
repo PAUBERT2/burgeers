@@ -11,10 +11,36 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.burger.name, burger_path(order.burger) %></td>
+
+
+        <!-- ADD BUTTON CHECKBOX -->
+        <td><%= link_to order.burger.name, burger_path(order.burger) %>
+
+
+      <% if request.original_url.include?("mine") %>
+        <%= simple_form_for order do |f| %>
+          <% if order.errors.any? %>
+            <div class="errors-container">
+              <ul>
+                <% @order.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <%= f.submit class: "btn-push" %>
+        <% end %>
+      <% end %>
+
+
+
+
+
+
+        </td>
         <td><%= order.quantity %> burgers</td>
         <td><%= order.total_price %> €</td>
-        <td><%= order.delivered ? "👍 Livré" : "🚀 En cours de livraison" %></td>
+        <td><%= order.delivered %></td>
         <td><%= order.user.first_name %></td>
       </tr>
     <% end %>
