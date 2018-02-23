@@ -4,7 +4,7 @@ class BurgersController < ApplicationController
 
   def index
 
-    @burgers = policy_scope(Burger).order(created_at: :desc)
+    @burgers = policy_scope(Burger).where.not(quantity_max: 0).order(created_at: :desc)
 
     @users = User.where.not(latitude: nil, longitude: nil)
 

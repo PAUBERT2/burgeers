@@ -4,14 +4,17 @@
     <!-- GOING BACK TO THE BURGER LIST -->
     <%= link_to "Back to the list", root_path(), {class: "btn-burgeers"} %> |
     <%= link_to "Delete", burger_path(@burger), method: :delete, class: "btn-burgeers" %> |
-    <%= link_to "Update your burger", edit_burger_path(@burger), class: "btn-burgeers" %> |
-    <%= link_to "Order !", new_burger_order_path(@burger), {class: "btn-push"} %>
+    <%= link_to "Update your burger", edit_burger_path(@burger), class: "btn-burgeers" %>
+    <% if @burger.quantity_max != 0 %>
+       | <%= link_to "Order !", new_burger_order_path(@burger), {class: "btn-push"} %>
+    <% end %>
   </div>
 </div>
 
 
-
-<%= render 'orders/new', burger: @burger %>
+<% if @burger.quantity_max != 0 %>
+  <%= render 'orders/new', burger: @burger %>
+<% end %>
 
 
 
