@@ -1,4 +1,4 @@
 <%= simple_form_for([@burger, @order]) do |f| %>
-  <%= f.input :quantity, collection: 1..@burger.quantity_max, label: 'Burger quantity' %>
-  <%= f.button :submit, label: 'Order!' %>
+  <%= f.input :quantity, collection: 1..@burger.quantity_max, label: 'Burger quantity', :input_html=> { class: "form-show" } %>
+  <%= f.button :submit, label: 'Order!', class: "btn-push" %>
 <% end %>
