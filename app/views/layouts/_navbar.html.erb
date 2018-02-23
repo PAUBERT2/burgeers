@@ -19,10 +19,10 @@
             <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
               <li>
-              <li>
-                <%= link_to admin_burgers_path do %>
+                <%= link_to admin_burgers_path() do %>
                   <i class="fas fa-utensils"></i> <%= t(".profile", default: "My kitchen") %>
                 <% end %>
+              </li>
               <li>
                 <%= link_to orders_path() do %>
                   <i class="fas fa-shopping-basket"></i>  <%= t(".settings", default: "Basket") %>
@@ -33,11 +33,10 @@
                   <i class="fa fa-cog"></i>  <%= t(".settings", default: "My orders") %>
                 <% end %>
               </li>
-              </li>
               <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
-                <% end %>
+                <%= link_to "Destroy", destroy_user_session_path, method: :delete  %>
+                  <!-- <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %> -->
+
               </li>
             </ul>
           </div>
@@ -46,18 +45,6 @@
         <!-- Login link (when logged out) -->
         <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
-    </div>
-
-    <!-- Dropdown list appearing on mobile only -->
-    <div class="navbar-wagon-item hidden-md hidden-lg">
-      <div class="dropdown">
-        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Some mobile link</a></li>
-          <li><a href="#">Other one</a></li>
-          <li><a href="#">Other one</a></li>
-        </ul>
-      </div>
     </div>
   </div>
 </div>
