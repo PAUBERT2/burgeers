@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create]
   end
 
-  resources :orders, only: :index do
+  resources :orders, only: [:index, :update] do
     collection do
       get "mine" , to: "orders#index_cooker_orders"
     end

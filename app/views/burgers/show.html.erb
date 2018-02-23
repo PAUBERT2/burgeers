@@ -10,12 +10,9 @@
 </div>
 
 
-<%= form_for([@burger, @order]) do |f| %>
 
-  <%= f.label :quantity, 'Quantité' %>
-  <%= f.text_field :quantity %>
+<%= render 'orders/new', burger: @burger %>
 
-<%= f.submit %>
 
 
 <div class="row background-card">
@@ -71,6 +68,4 @@
   </div>
 </div>
 
-
- <% end %>
 
