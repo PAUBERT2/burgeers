@@ -1,29 +1,41 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>BURGEERS 🍔</title>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
-  </head>
-  <body>
-    <%= render 'layouts/flashes' %>
-    <div class="container">
+<div class="container">
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>BURGEERS</title>
+      <%= csrf_meta_tags %>
+      <%= action_cable_meta_tag %>
+      <%= stylesheet_link_tag 'application', media: 'all' %>
+      <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    </head>
 
-      <% if current_user %>
-        <%= current_user.first_name %>
-      <% else %>
-        <p>Not connected</p>
-      <% end %>
+    <body>
+      <%= render 'layouts/flashes' %>
+      <div class="container">
 
-      <%= render "layouts/navbar" %>
+        <% if current_user %>
+          <%= current_user.first_name %>
+        <% else %>
+          <p>Not connected</p>
+        <% end %>
 
-      <%= yield %>
-    </div>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
-  </body>
-</html>
+        <%= render "layouts/navbar" %>
+
+        <%= yield %>
+
+        <%= render "layouts/footer" %>
+      </div>
+
+      <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}&libraries=places" %>
+
+      <%= javascript_include_tag 'application' %>
+      <%= javascript_pack_tag 'application' %>
+      <%= javascript_pack_tag "map"%>
+
+
+
+    </body>
+
+  </html>

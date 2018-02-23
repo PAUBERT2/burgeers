@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+   <div class="form-burger">
+    <%= simple_form_for @burger do |f| %>
+        <% if @burger.errors.any? %>
+          <div class="errors-container">
+            <ul>
+              <% @burger.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      <%= f.input :name, label: 'Your name please :', input_html: {class: 'my-input'} %>
+      <%= f.input :description, label: 'Description :', input_html: {class: 'my-input'} %>
+      <%= f.input :price, label: 'How much do you want to sale it ?', input_html: {class: 'my-input'}  %>
+      <%= f.input :quantity_max, label: 'How many ?', input_html: {class: 'my-input'}  %>
+      <%= f.input :opening_days, collection: Burger::WEEK_DAYS , label: 'Days you can cook :', input_html: {class: 'my-input'} %>
+      <%= f.input :published%>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
+      <div class="inline"><%= f.submit class: "btn-push" %>
+        <%= link_to "Home", root_path(), {class: "btn-burgeers"} %></div>
+      <% end %>
+
+
+       </div>
+    </div>
+</div>

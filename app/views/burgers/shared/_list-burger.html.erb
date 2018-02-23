@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row {margin-left:0;margin-right:0}">
   <% @burgers.each do |burger| %>
 
     <div class="col-xs-12 col-sm-4">
@@ -12,6 +12,7 @@
                 <div class="card-description"> <%= burger.description %> </div>
             </div>
         <% end %>
+
     </div>
 
   <% end %>
