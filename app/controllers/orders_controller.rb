@@ -27,8 +27,10 @@ class OrdersController < ApplicationController
       render 'burgers/show'
     else
       @order.total_price = @order.quantity * @burger.price
+      @burger.quantity_max -= @order.quantity
       # il faut pernser à faire les strong params sinon c'est jamais sauvegarder en bdd et ca passe en else
       if @order.save
+        @burger.save
         redirect_to orders_path()
       else
       # suffit juste d'indiquer le nom et comprend qu'il faut le chercher en local par défaut, sinon '../jfk/kljf/nom'
