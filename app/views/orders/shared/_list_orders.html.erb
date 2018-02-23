@@ -1,11 +1,10 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
     <% @orders.each do |order| %>
-
       <div class="message">
         <%= image_tag order.burger.photo, class: "photo-order"%>
         <div class="message-name burger-title">
-          <%= order.burger.name %>
+          <%= order.quantity %> <%= order.burger.name %>
         </div>
         <div class="message-body burger-title-2">
           <%= order.delivered ? "🚀 Livré" : "🚀 En cours de livraison" %>
@@ -14,6 +13,27 @@
         <div class="message-body">
           <p class="status pending">Pending</p>
           <%= order.total_price %> €
+        </div>
+        <div>
+
+
+          <% if request.original_url.include?("mine") %>
+            <%= simple_form_for order do |f| %>
+              <% if order.errors.any? %>
+                <div class="errors-container">
+                  <ul>
+                    <% @order.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <%= f.submit class: "btn-push" %>
+            <% end %>
+          <% end %>
+
+
+
         </div>
       </div>
     <% end %>

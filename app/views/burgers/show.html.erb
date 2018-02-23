@@ -8,9 +8,16 @@
     <% if policy(@burger).edit? %>
       <%= link_to "Update your burger", edit_burger_path(@burger), class: "btn-burgeers" %> |
     <% end %>
-    <%= link_to "Order", new_burger_order_path(@burger), {class: "btn-push"} %>
-
+    <% if @burger.quantity_max != 0 %>
+       | <%= link_to "Order !", new_burger_order_path(@burger), {class: "btn-push"} %>
+    <% end %>
   </div>
+
+
+<% if @burger.quantity_max != 0 %>
+  <%= render 'orders/new', burger: @burger %>
+<% end %>
+
 
 
 <div class="row background-card">
@@ -38,4 +45,5 @@
 </div>
 
 </div>
+
 

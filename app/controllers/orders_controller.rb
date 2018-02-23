@@ -22,14 +22,20 @@ class OrdersController < ApplicationController
 
     @burger =  Burger.find(params[:burger_id])
     @order.burger = @burger
-
-    @order.total_price = @order.quantity * @burger.price
-    # il faut pernser à faire les strong params sinon c'est jamais sauvegarder en bdd et ca passe en else
-    if @order.save
-      redirect_to order_path(@order)
+    if @order.quantity > @burger.quantity_max
+      flash[:alert] = "You cannot order more than #{@burger.quantity_max}!"
+      render 'burgers/show'
     else
-    # suffit juste d'indiquer le nom et comprend qu'il faut le chercher en local par défaut, sinon '../jfk/kljf/nom'
-      render :new
+      @order.total_price = @order.quantity * @burger.price
+      @burger.quantity_max -= @order.quantity
+      # il faut pernser à faire les strong params sinon c'est jamais sauvegarder en bdd et ca passe en else
+      if @order.save
+        @burger.save
+        redirect_to orders_path()
+      else
+      # suffit juste d'indiquer le nom et comprend qu'il faut le chercher en local par défaut, sinon '../jfk/kljf/nom'
+        render 'burgers/show'
+      end
     end
   end
 
@@ -53,6 +59,18 @@ class OrdersController < ApplicationController
     # end
     # # methode listant toutes les commandes d'un utilisateur
     # return @orders
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    authorize @order
+    @order.delivered = true
+    if @order.save
+      redirect_to mine_orders_path()
+    else
+    # suffit juste d'indiquer le nom et comprend qu'il faut le chercher en local par défaut, sinon '../jfk/kljf/nom'
+      render 'orders/index_cooker_orders'
+    end
   end
 
   def show
