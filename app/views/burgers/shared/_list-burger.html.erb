@@ -1,15 +1,19 @@
 <div class="row {margin-left:0;margin-right:0}">
   <% @burgers.each do |burger| %>
+
     <div class="col-xs-12 col-sm-4">
-      <%= link_to burger_path(burger) do %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path burger.photo { |n|  } %>)">
-          <p class = "burger-title"> <span id="banner-typed-text"></span>
-          </p>
-          <div class="card-category"> <%= burger.name %></div>
-          <div class="card-description"> <%= burger.description %></div>
-          <div class="card-price"><%=burger.price %>$   </div>
-        </div>
-      <% end %>
+        <%= link_to burger_path(burger) do %>
+
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path burger.photo { |n|  } %>)">
+
+                <div class="card-user"> <%= burger.name %> </div>
+                <div class="card-price"> <%= burger.price %>$ </div>
+
+                <div class="card-description"> <%= burger.description %> </div>
+            </div>
+        <% end %>
+
     </div>
+
   <% end %>
 </div>
