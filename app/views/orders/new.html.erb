@@ -2,7 +2,7 @@
   <div class="class= col-xs-6 col-xs-offset-3">
 
     <div class="form-burger">
-      <%= form_for([@burger, @order]) do |f| %>
+      <%= form_for [@burger, @order], :html => { :class => 'form-inline' } do |f| %>
         <%= f.label :quantity, 'How many burger ?', input_html: {class: 'my-input'} %>
         <%= f.text_field :quantity %>
         <%= f.submit class: "btn-push" %>
