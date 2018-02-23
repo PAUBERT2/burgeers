@@ -17,7 +17,7 @@ class OrderPolicy < ApplicationPolicy
     true
   end
 
-  def update
+  def update?
     true
   end
 
