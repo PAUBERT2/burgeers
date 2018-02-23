@@ -1,39 +1,107 @@
 .card {
+  position: relative;
   height: 175px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
-  color: white;
-  position: relative;
   margin-top: 20px;
+  border-radius: 4px;
+  color: white;
 }
-.card-user {
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 2px 2px 3px rgba(0,0,0,.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.card-description {
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+  right: 10px;
+  top: 10px;
+  // list-style: none;
+  transform: scale(1);
+  padding-left: 12px;
+  font-size: 16px;
+
+  overflow: hidden;
+  top: 200px;
+  // padding: 10px 10px;
+  // -webkit-backdrop-filter: hue-rotate(180deg);
+  // background: rgba(255, 255, 255, 0.7);
+  transition: all 0.8s ease-in-out;
+}
+
+.card:hover .card-description{
+  top: 55%;
+  margin-left: 5px;
+  padding-left: 10px;
+  padding-top: 3px;
+}
+
+.card-price {
   position: absolute;
   right: 10px;
   top: 10px;
   width: 40px;
   border-radius: 50%;
 }
-.card-category {
+
+.card-user {
   position: absolute;
+  left: 10px;
   top: 10px;
-  left: 10px;
-  font-size: 15px;
-  text-transform: uppercase;
+  // width: 40px;
+  // border-radius: 50%;
 }
-.card-description {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-}
-.card-description h2 {
-  font-size: 24px;
-}
-.card-description p {
-  font-size: 14px;
-  opacity: 0.7;
-  font-weight: lighter;
-}
+
+// .card .burger_name {
+//   font-size: 20px;
+//   color: white;
+
+// }
+
+// .card .burger_price {
+//   font-size: 16px;
+//   color: white;
+//   margin-top: 3px;
+// }
+
+
+// .card {
+//   // background-size: cover;
+//   // background-position: center;
+//   // min-height: 400px;
+//   // border-radius: 4px;
+//   // position: relative;
+//   transform: scale(1);
+//   // width: 300px;
+//   transition: all 1s ease-in-out;
+//   // animation: blink 2s;
+//   // animation-iteration-count: infinite;
+// }
+
+
+// .card-category {
+//   position: absolute;
+//   top: 10px;
+//   left: 10px;
+//   font-size: 15px;
+//   text-transform: uppercase;
+// }
+
+// .card-description h2 {
+//   font-size: 24px;
+// }
+
+// .card-description p {
+//   font-size: 14px;
+//   opacity: 0.7;
+//   font-weight: lighter;
+// }
+
 .card-link {
   position: absolute;
   top: 0;
@@ -48,19 +116,10 @@
   opacity: 0.1;
 }
 
-.card-price {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 40px;
-  border-radius: 50%;
-}
-
 .burger-photo {
   border-radius: 50%;
   background-position: center;
 }
-
 
 .menu-show {
   color: white;
