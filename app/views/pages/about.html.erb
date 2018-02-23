@@ -1,73 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap + Fontawesome CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-<body>
-  <div class="container">
     <div class="about-title">
       <h2> THE AMAZING TEAM </h2>
     </div>
 
-      <div class="profile text-center">
+    <div class="profile text-center">
 
-        <div class="stat">
+      <div class="stat">
+        <div class="stat-content">
+          <%= image_tag "laurie.jpg", height: 100, class: 'about-avatar' %>
+            <h3>LAURIE</h3>
+            <p>Back end</p>
+            <div class="smiley">🥗</div>
+        </div>
+      </div>
+
+      <div class="stat">
           <div class="stat-content">
-            <%= image_tag "laurie.jpg", height: 100, class: 'about-avatar' %>
-              <h3>LAURIE</h3>
-              <p>Back end</p>
+            <%= image_tag "paul.jpg", height: 100, class: 'about-avatar' %>
+              <h3>PAUL</h3>
+              <p>Front end</p>
+              <div class="smiley">🥓</div>
           </div>
-        </div>
+      </div>
 
-        <div class="stat">
-            <div class="stat-content">
-              <%= image_tag "paul.jpg", height: 100, class: 'about-avatar' %>
-                <h3>PAUL</h3>
-                <p>Front end</p>
-            </div>
-        </div>
-
-        <div class="stat">
-            <div class="stat-content">
-              <%= image_tag "ismet.jpg", height: 100, class: 'about-avatar' %>
-                <h3>ISMET</h3>
-                <p>Full stack</p>
-            </div>
-        </div>
-
-        <div class="stat">
-            <div class="stat-content">
-              <%= image_tag "chloe.jpg", height: 100, class: 'about-avatar' %>
-                <h3>CHLOE</h3>
-                <p>Trello first</p>
-            </div>
-        </div>
-
-        <div class="description">
-          <div class="description-content">
-              <h3>More about Burgeers</h3>
-              <p class="text-justify">
-                The team is born thanks love for food porn or home made things.
-                We love to proposes a great product for a happy belly. 🤪
-              </p>
+      <div class="stat">
+          <div class="stat-content">
+            <%= image_tag "ismet.jpg", height: 100, class: 'about-avatar' %>
+              <h3>ISMET</h3>
+              <p>Full stack</p>
+              <div class="smiley">🍟</div>
           </div>
-        </div>
+      </div>
 
-        <div class="video-container">
-          <video width="320" height="240" autoplay>
-            <source src="videos/burgeers.mp4" type="video/mp4">
-            <source src="videos/burgeers.ogg" type="video/ogg">
-            Your browser does not support the video tag.
-          </video>
+      <div class="stat">
+          <div class="stat-content">
+            <%= image_tag "chloe.jpg", height: 100, class: 'about-avatar' %>
+              <h3>CHLOE</h3>
+              <p>Trello first</p>
+              <div class="smiley">🍅</div>
+          </div>
+      </div>
+
+      <div class="background description">
+        <div class="description-content">
+            <h3>More about Burgeers</h3>
+            <p class="text-justify">
+              The team is born thanks love for food porn or home made things.
+              We love to proposes a great product for a happy belly. 🤪
+            </p>
         </div>
-    </div>
-  </div>
-</body>
-</html>
+      </div>
+
+      <div class="video-container">
+          <%= video_tag 'burgeers.mp4',  autoplay: true, loop: true %>
+      </div>
+
+</div>
+
